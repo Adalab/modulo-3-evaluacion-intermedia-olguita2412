@@ -18,13 +18,15 @@ function App() {
   });
 
   //Llamada a la API
-  
+  console.log(data);
   useEffect(() => {
-    if (data === []){
-    callToApi().then((response) => {
-      setData(response);
-    });}
-  }, []);
+    if (data.length === 0) {
+      callToApi().then((response) => {
+        setData(response);
+        ls.set("data", response);
+      });
+    }
+  });
 
   //Funciones handle
   const handleAddNewQuote = (ev) => {
@@ -97,7 +99,7 @@ function App() {
       </header>
       <form className="form__filter">
         <label
-          for="phrase"
+          htmlFor="phrase"
           className="form__filter--label form__filter--label-quote"
         >
           Filter by quote:
@@ -111,7 +113,7 @@ function App() {
           />
         </label>
         <label
-          for="characters"
+          htmlFor="characters"
           className="form__filter--label form__filter--label-character"
         >
           Filter by character:
@@ -135,67 +137,82 @@ function App() {
 
       <main className="main">
         <ul className="list">{htmlData}</ul>
-        </main>
-        <form className="form__filter">
-          <h2 className="header__title">Add a new quote:</h2>
-          <label
-            for="quote"
-            className="form__filter--label form__filter--label-quote"
-          >
-            Quote:
-            <input
-              className="form__filter--input"
-              type="text"
-              name="quote"
-              id="quote"
-              value={addNewQuote.quote}
-              onChange={handleAddNewQuote}
-            />
-          </label>
-          <label
-            for="character"
-            className="form__filter--label form__filter--label-character"
-          >
-            Character:
-            <select
-              id="character"
-              name="character"
-              className="form__filter--input"
-              value={addNewQuote.character}
-              onChange={handleAddNewQuote}
-              selected
-            >
-              <option value="">Choose a character</option>
-              <option value="Ross">Ross</option>
-              <option value="Joey">Joey</option>
-              <option value="Phoebe">Phoebe</option>
-              <option value="Rachel">Rachel</option>
-              <option value="Chandler">Chandler</option>
-              <option value="Monica">Monica</option>
-            </select>
-          </label>
+      </main>
+      <form className="form__filter">
+        <h2 className="header__title">Add a new quote:</h2>
+        <label
+          htmlFor="quote"
+          className="form__filter--label form__filter--label-quote"
+        >
+          Quote:
           <input
-            className="form__filter--button"
-            type="submit"
-            value="Add"
-            onClick={handleNewQuote}
+            className="form__filter--input"
+            type="text"
+            name="quote"
+            id="quote"
+            value={addNewQuote.quote}
+            onChange={handleAddNewQuote}
           />
-        </form>
-      
-      <footer className='footer'>
-      <small className='footer__copy'>&copy; 2022 Olga RG</small>
-      <section className='footer__rrss'>
-        <a href='https://github.com/olgargarrucho' className='footer__rrss--link' target='_blank' rel="noreferrer">
-          <i className='icon fab fa-github-square'></i>
-        </a>
-        <a href='https://www.linkedin.com/in/olgargarrucho/' className='footer__rrss--link' target='_blank' rel="noreferrer">
-          <i className='icon fab fa-linkedin'></i>
-        </a>
-        <a href='https://twitter.com/olgargarrucho' className='footer__rrss--link' target='_blank' rel="noreferrer">
-          <i className='icon fab fa-twitter-square'></i>
-        </a>
-      </section>
-    </footer>
+        </label>
+        <label
+          htmlFor="character"
+          className="form__filter--label form__filter--label-character"
+        >
+          Character:
+          <select
+            id="character"
+            name="character"
+            className="form__filter--input"
+            value={addNewQuote.character}
+            onChange={handleAddNewQuote}
+            selected
+          >
+            <option value="">Choose a character</option>
+            <option value="Ross">Ross</option>
+            <option value="Joey">Joey</option>
+            <option value="Phoebe">Phoebe</option>
+            <option value="Rachel">Rachel</option>
+            <option value="Chandler">Chandler</option>
+            <option value="Monica">Monica</option>
+          </select>
+        </label>
+        <input
+          className="form__filter--button"
+          type="submit"
+          value="Add"
+          onClick={handleNewQuote}
+        />
+      </form>
+
+      <footer className="footer">
+        <small className="footer__copy">&copy; 2022 Olga RG</small>
+        <section className="footer__rrss">
+          <a
+            href="https://github.com/olgargarrucho"
+            className="footer__rrss--link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="icon fab fa-github-square"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/olgargarrucho/"
+            className="footer__rrss--link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="icon fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://twitter.com/olgargarrucho"
+            className="footer__rrss--link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className="icon fab fa-twitter-square"></i>
+          </a>
+        </section>
+      </footer>
     </div>
   );
 }

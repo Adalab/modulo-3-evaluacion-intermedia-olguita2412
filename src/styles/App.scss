@@ -1,6 +1,5 @@
 @import "reset.scss";
 
-
 .header {
   min-height: 10vh;
   display: flex;
@@ -85,6 +84,8 @@
   gap: 5px;
   @media all and (min-width: 768px) {
     font-size: 1.8rem;
+    flex-direction: row;
+    flex-wrap: wrap;
   
   }
   &__quote {
@@ -92,7 +93,10 @@
     background-color: rgba(128, 128, 128, 0.31);
     border-radius: 30px;
     padding: 5px;
-    text-align: center
+    text-align: center;
+    @media all and (min-width: 768px) {
+      width: 40vw;
+    }
   }
   &__character {
     font-family: "Darker Grotesque", sans-serif;
