@@ -1,31 +1,129 @@
-.App {
-  text-align: center;
-}
+@import "reset.scss";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  &__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--img {
+      width: 250px;
+    }
+  }
+  &__title {
+    font-family: "Darker Grotesque", sans-serif;
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    padding: 20px;
+    margin: 0;
+    color: rgb(202, 10, 10);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form {
+  &__filter {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    &--label {
+      font-family: "Darker Grotesque", sans-serif;
+      font-size: 1.8rem;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-weight: bold;
+      &-quote {
+        color: rgb(7, 7, 186);
+      }
+      &-character {
+        color: rgb(200, 168, 23);
+      }
+    }
+    &--input {
+      background-color: rgb(212, 212, 212);
+      border-radius: 20px;
+      border: none;
+      padding: 5px;
+      font-size: 1.6rem;
+    }
+    &--button {
+      background-color: rgb(202, 10, 10);
+      border: none;
+      width: 75px;
+      height: 30px;
+      padding: 5px;
+      border-radius: 20px;
+    }
+  }
 }
 
-.App-link {
-  color: #61dafb;
+.list {
+  padding: 20px 50px;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  &__quote {
+    font-family: "Pacifico", cursive;
+  }
+  &__character {
+    font-family: "Darker Grotesque", sans-serif;
+  }
+}
+
+.footer {
+  border-top: 1px solid rgba(128, 128, 128, 0.31);
+  min-height: 8vh;
+  padding: 0px 50px 0px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__copy {
+    font-size: 14px;
+    color: rgba(128, 128, 128, 0.31);
+  }
+  &__rrss {
+    &--link {
+      color: rgba(128, 128, 128, 0.31);
+      & .icon {
+        font-size: 20px;
+        margin-right: 5px;
+        margin-top: 5px;
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  &::before {
+    content: "";
+    background-image: url(../images/characters.png);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header__img--img {
+    animation: App-logo-spin 5s linear;
+  }
 }
 
 @keyframes App-logo-spin {
