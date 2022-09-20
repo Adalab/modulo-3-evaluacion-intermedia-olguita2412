@@ -7,7 +7,7 @@ import logo from "../images/friends.png";
 
 function App() {
   //Variables de estado
-  const [data, setData] = useState(ls.get("data", quotes));
+  const [data, setData] = useState(ls.get("data", []));
   const [filterQuote, setFilterQuote] = useState(ls.get("searchQuote", ""));
   const [filterCharacters, setFilterCharacters] = useState(
     ls.get("searchCharacter", "")
@@ -18,10 +18,12 @@ function App() {
   });
 
   //Llamada a la API
+  
   useEffect(() => {
+    if (data === []){
     callToApi().then((response) => {
       setData(response);
-    });
+    });}
   }, []);
 
   //Funciones handle
@@ -81,7 +83,7 @@ function App() {
   ls.set("data", data);
 
   return (
-    <div>
+    <div className="page">
       <header className="header">
         <div className="header__img">
           <img
@@ -133,6 +135,7 @@ function App() {
 
       <main className="main">
         <ul className="list">{htmlData}</ul>
+        </main>
         <form className="form__filter">
           <h2 className="header__title">Add a new quote:</h2>
           <label
@@ -178,7 +181,7 @@ function App() {
             onClick={handleNewQuote}
           />
         </form>
-      </main>
+      
       <footer className='footer'>
       <small className='footer__copy'>&copy; 2022 Olga RG</small>
       <section className='footer__rrss'>
